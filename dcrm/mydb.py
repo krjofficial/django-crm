@@ -6,6 +6,9 @@ dataBase = mysql.connector.connect(
   passwd="root",
 )
 
+# superuser username = crm_architect 
+# superuser password = 123
+
 # prepare a cursor object
 cursorObject = dataBase.cursor()
 
