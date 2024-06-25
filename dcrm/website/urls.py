@@ -5,5 +5,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     # path('login/', views.login_user, name='login'),
     path('logout', views.logout_user, name='logout'),
-    
+    path('record/<int:pk>', views.user_record, name='record'),
+    # <int:pk> is like params in nodejs 
+    path('delete_record/<int:pk>', views.delete_record, name='delete_record'),
+    path('add_record' , views.add_record, name='add_record'),
 ]

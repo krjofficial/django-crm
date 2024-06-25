@@ -1,0 +1,22 @@
+{%extends 'base.html'%} {%block content%}
+
+<h1>User Record:</h1>
+
+<div class="card">
+  <div class="card-header">
+    <strong>{{user_record.first_name}} {{user_record.last_name}}</strong>
+  </div>
+  <div class="card-body" style="font-size: 20px">
+    <p class="card-text">Id: {{user_record.id}}</p>
+    <p class="card-text">Phone no.: {{user_record.phone}}</p>
+    <p class="card-text">City: {{user_record.city}}</p>
+    <p class="card-text">Created At: {{user_record.created_at}}</p>
+  </div>
+</div>
+
+<br/> <br/>
+
+<a href="{% url 'home'%}" class="btn btn-secondary">Back</a>
+<a href="{% url 'delete_record' user_record.id %}" class="btn btn-danger">Delete</a>
+
+{%endblock%}

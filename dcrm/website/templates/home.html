@@ -1,35 +1,52 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Records...</h1>
 
-{%block content%}
+<table class="table table-striped table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">City</th>
+      <th scope="col">Created At</th>
+    </tr>
+  </thead>
 
-{%if user.is_authenticated %}
-<h1>Hello</h1>
+  <tbody>
+    {% if records %}
+      {% for record in records %}
+      <tr>
+        <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
+        <td>{{ record.first_name }} {{ record.last_name }}</td>
+        <td>{{ record.phone }}</td>
+        <td>{{ record.city }}</td>
+        <td>{{ record.created_at }}</td>
+      </tr>
+      {% endfor %}
+    {% endif %}
+  </tbody>
+</table>
 
-{%else %}
+{% else %}
 
 <div class="col-md-6 offset-md-3">
-<h1>Login</h1>
-<br/>
-<form method="POST" action="{% url 'home'%}">
-  {% csrf_token %} 
-
-  <form>
+  <h1>Login</h1>
+  <br />
+  <form method="POST" action="{% url 'home' %}">
+    {% csrf_token %}
     <div class="mb-3">
-      
-      <input type="text" class="form-control" name="username" , placeholder="Username" required>
-      
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
     </div>
     <div class="mb-3">
-      
-      <input type="password" class="form-control" name="password" , placeholder="Password" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
     </div>
-   
     <button type="submit" class="btn btn-secondary">Login</button>
   </form>
-</form>
-
 </div>
 
-{%endif%}
-
-{%endblock%}
+{% endif %}
+{% endblock %}
