@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-bvi9#z@z^b_ib71+jm8wo6cm7er_)!*$q35%ckwpvcg4t@99j!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -43,6 +43,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'dcrm.urls'
+
+
 
 TEMPLATES = [
     {
